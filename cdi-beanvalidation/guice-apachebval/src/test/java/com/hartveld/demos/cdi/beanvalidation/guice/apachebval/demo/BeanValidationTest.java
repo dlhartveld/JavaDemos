@@ -15,13 +15,11 @@ import com.google.inject.Injector;
 
 public class BeanValidationTest {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(BeanValidationTest.class);
+	private static final Logger LOG = LoggerFactory.getLogger(BeanValidationTest.class);
 
 	@Test
-	public void demonstration() {
-
-		logger.info("Starting demonstration...");
+	public void demonstrationOfFailedValidation() {
+		LOG.info("Starting demonstration...");
 
 		Injector injector = Guice.createInjector(new ValidationModule());
 		Bean bean = injector.getInstance(Bean.class);
@@ -29,17 +27,28 @@ public class BeanValidationTest {
 		boolean exceptionWasThrown = false;
 		try {
 
-			logger.info("The following call will be validated, and fails...");
+			LOG.info("The following call will be validated, and fails...");
 			bean.doSomething(0, 0);
 
 		} catch (ConstraintViolationException e) {
 
-			logger.info("Validation failed. Test success!");
+			LOG.info("Validation failed. Test success!");
 			exceptionWasThrown = true;
 
 		}
 		assertThat(exceptionWasThrown, is(true));
 
+	}
+
+	@Test
+	public void demonstrationOfSucceedingValidation() {
+		LOG.info("Starting demonstration...");
+
+		Injector injector = Guice.createInjector(new ValidationModule());
+		Bean bean = injector.getInstance(Bean.class);
+
+		LOG.info("The following call will be validated, and fails...");
+		bean.doSomething(20, 5);
 	}
 
 }
