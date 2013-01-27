@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.hartveld.demos</groupId>
+	<artifactId>com.hartveld.demos.parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Simple Java demo projects</name>
+	<packaging>pom</packaging>
+
+	<properties>
+		<version.maven>3.0.4</version.maven>
+		<version.java>1.7</version.java>
+
+		<version.dep.logback>1.0.9</version.dep.logback>
+		<version.dep.junit>4.11</version.dep.junit>
+		<version.dep.hamcrest>1.3</version.dep.hamcrest>
+
+		<version.plugin.maven.compiler>3.0</version.plugin.maven.compiler>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<modules>
+		<module>cdi-beanvalidation</module>
+	</modules>
+
+	<prerequisites>
+		<maven>${version.maven}</maven>
+	</prerequisites>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${version.dep.logback}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.dep.junit}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>${version.dep.hamcrest}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<pluginManagement>
+
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${version.plugin.maven.compiler}</version>
+					<configuration>
+						<source>${version.java}</source>
+						<target>${version.java}</target>
+					</configuration>
+				</plugin>
+
+			</plugins>
+
+		</pluginManagement>
+
+	</build>
+
+</project>
