@@ -32,7 +32,7 @@ public class BeanValidationTest {
 
 		} catch (ConstraintViolationException e) {
 
-			LOG.info("Validation failed. Test success!");
+			LOG.info("Validation failed. Test success: {}", e.getMessage(), e);
 			exceptionWasThrown = true;
 
 		}
@@ -47,7 +47,7 @@ public class BeanValidationTest {
 		Injector injector = Guice.createInjector(new ValidationModule());
 		Bean bean = injector.getInstance(Bean.class);
 
-		LOG.info("The following call will be validated, and fails...");
+		LOG.info("The following call will be validated, and succeeds...");
 		bean.doSomething(20, 5);
 	}
 
