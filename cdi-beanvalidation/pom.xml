@@ -17,6 +17,7 @@
 
 	<modules>
 		<module>guice-apachebval</module>
+		<module>weld-hibernatevalidator</module>
 	</modules>
 
 </project>
